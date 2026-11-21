@@ -4,6 +4,10 @@ import { CoachingInstitute, SubjectSource, CoachingInstituteWithMiniMock } from 
  * Check if a coaching institute is a MiniMock source
  */
 export function isMiniMockSource(coaching: CoachingInstitute | CoachingInstituteWithMiniMock): boolean {
+  if (!coaching) {
+    return false
+  }
+
   const extended = coaching as CoachingInstituteWithMiniMock
   return extended.type === 'minimock' && Array.isArray(extended.subjectSources) && extended.subjectSources.length > 0
 }
